@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -28,4 +32,13 @@ jobs:
         #Configue Git Identity
       - name: Configure Git
         run: 
-          git config -- global user.name
+          git config --global user.name Nandhu20-06
+          git config --global user.email nandithatadiparthi23@gmail.com
+
+      #Deploy into Github Pages
+      - name: Deployment
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run:
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          npm run deploy
