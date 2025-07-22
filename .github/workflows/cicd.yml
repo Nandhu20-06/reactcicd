@@ -29,9 +29,9 @@ jobs:
       - name: Build the project
         run: npm run build
 
-        #Configue Git Identity
+         #Configure Git Identity
       - name: Configure Git
-        run: 
+        run: |
           git config --global user.name Nandhu20-06
           git config --global user.email nandithatadiparthi23@gmail.com
 
